@@ -1,0 +1,25 @@
+PUT YOUR PDCH DATASET FILES IN THIS FOLDER
+==========================================
+
+Access: Contact your institution / dataset authors for access.
+
+Expected structure:
+
+pdch/
+├── metadata.csv            (columns: subject_id, phq8_score, label)
+├── audio/
+│   ├── subject_001.wav
+│   └── ...
+├── transcripts/
+│   ├── subject_001.txt
+│   └── ...
+├── video/
+│   ├── subject_001.mp4
+│   └── ...
+└── eeg/
+    ├── subject_001.mat     (or .csv / .edf depending on format)
+    └── ...
+
+Config to use: configs/pdch_config.yaml
+Preprocess command:
+  python scripts/preprocess_data.py --dataset pdch --data_root data/raw/pdch --output_dir data/processed/pdch --modalities speech text face eeg

@@ -21,13 +21,17 @@ env/
 *.ipynb_checkpoints
 
 # Data — raw and processed (too large for git)
-data/raw/
+# Folder structure + placeholder .txt files ARE tracked (see data/raw/)
+# Actual dataset files are ignored
+data/raw/**/*.wav
+data/raw/**/*.mp4
+data/raw/**/*.avi
+data/raw/**/*.csv
+data/raw/**/*.mat
+data/raw/**/*.edf
+data/raw/**/*.txt.bak
 data/processed/
 data/cache/
-*.wav
-*.mp4
-*.avi
-*.csv
 *.pkl
 *.h5
 *.hdf5

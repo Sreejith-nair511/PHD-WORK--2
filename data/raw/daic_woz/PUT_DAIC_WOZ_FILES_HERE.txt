@@ -1,0 +1,25 @@
+PUT YOUR DAIC-WOZ DATASET FILES IN THIS FOLDER
+===============================================
+
+Download from: https://dcapswoz.ict.usc.edu/
+(Requires signed license agreement — free for research)
+
+Expected structure after extraction:
+
+daic_woz/
+├── train_split_Depression_AVEC2017.csv
+├── dev_split_Depression_AVEC2017.csv
+├── test_split_Depression_AVEC2017.csv
+├── 300/
+│   ├── 300_AUDIO.wav
+│   ├── 300_TRANSCRIPT.csv
+│   └── 300_CLNF_features3D.txt
+├── 301/
+│   ├── 301_AUDIO.wav
+│   ├── 301_TRANSCRIPT.csv
+│   └── 301_CLNF_features3D.txt
+└── ... (189 participant folders: 300 to 492)
+
+Config to use: configs/daic_woz_config.yaml
+Preprocess command:
+  python scripts/preprocess_data.py --dataset daic_woz --data_root data/raw/daic_woz --output_dir data/processed/daic_woz --modalities speech text face

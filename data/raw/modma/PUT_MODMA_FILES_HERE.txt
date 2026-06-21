@@ -1,0 +1,24 @@
+PUT YOUR MODMA DATASET FILES IN THIS FOLDER
+============================================
+
+Download from: http://modma.lzu.edu.cn/data/index/
+(Free — requires registration)
+
+Expected structure after extraction:
+
+modma/
+├── labels.csv              (columns: subject_id, label, HAMD_score)
+├── EEG/
+│   ├── subject_001.mat     (128 channels, 250 Hz)
+│   ├── subject_002.mat
+│   └── ... (55 subjects)
+└── Speech/
+    ├── subject_001/
+    │   ├── task1.wav
+    │   └── task2.wav
+    ├── subject_002/
+    └── ...
+
+Config to use: configs/modma_config.yaml
+Preprocess command:
+  python scripts/preprocess_data.py --dataset modma --data_root data/raw/modma --output_dir data/processed/modma --modalities speech eeg
