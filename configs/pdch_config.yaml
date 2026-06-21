@@ -1,0 +1,13 @@
+# PDCH Dataset Configuration
+defaults:
+  - base_config
+
+dataset:
+  name: "PDCH"
+  root_dir: "data/raw/pdch"
+  modalities: ["speech", "text", "face", "eeg"]
+  phq8_threshold: 10
+
+training:
+  batch_size: 12
+  epochs: 80

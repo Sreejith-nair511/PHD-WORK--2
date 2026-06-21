@@ -1,0 +1,21 @@
+# DAIC-WOZ Dataset Configuration
+defaults:
+  - base_config
+
+dataset:
+  name: "DAIC-WOZ"
+  root_dir: "data/raw/daic_woz"
+  train_split: "train"
+  val_split: "dev"
+  test_split: "test"
+  phq8_threshold: 10
+  modalities: ["speech", "text", "face"]
+  
+  # DAIC-WOZ specific
+  interviewer_id: "Ellie"
+  participant_prefix: "P"
+
+training:
+  batch_size: 8
+  epochs: 100
+  learning_rate: 2e-5

@@ -1,0 +1,13 @@
+# MODMA Dataset Configuration
+defaults:
+  - base_config
+
+dataset:
+  name: "MODMA"
+  root_dir: "data/raw/modma"
+  modalities: ["speech", "eeg"]
+  phq8_threshold: 10
+
+training:
+  batch_size: 16
+  epochs: 80

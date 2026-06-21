@@ -1,0 +1,100 @@
+# Base Configuration for DG-HMCF
+
+model:
+  name: "DG-HMCF"
+  version: "1.0.0"
+
+  # Embedding dimensions
+  speech_embed_dim: 256
+  text_embed_dim: 256
+  face_embed_dim: 256
+  eeg_embed_dim: 256
+  fusion_dim: 512
+  hidden_dim: 256
+
+  # Branch settings
+  speech:
+    wav2vec2_model: "facebook/wav2vec2-base-960h"
+    sample_rate: 16000
+    max_length: 160000  # 10 seconds
+    behavioral_features: 6  # speech_rate, pause_dur, silence_ratio, pitch_var, energy_var, response_latency
+    bilstm_hidden: 128
+    bilstm_layers: 2
+    dropout: 0.1
+
+  text:
+    roberta_model: "roberta-base"
+    max_length: 512
+    linguistic_features: 5  # sentiment, neg_word_ratio, uncertainty, self_ref, emotional_polarity
+    bilstm_hidden: 128
+    bilstm_layers: 2
+    dropout: 0.1
+
+  face:
+    vit_model: "google/vit-base-patch16-224"
+    image_size: 224
+    behavioral_features: 7  # smile_freq, gaze_stability, blink_freq, 4 FAUs
+    dropout: 0.1
+
+  eeg:
+    n_channels: 64
+    sampling_rate: 256
+    segment_length: 256
+    cnn_channels: [64, 128, 256]
+    bilstm_hidden: 128
+    bilstm_layers: 2
+    dropout: 0.1
+
+  # Dynamic Gating
+  gating:
+    hidden_dim: 128
+    temperature: 1.0
+
+  # Multi-Scale Temporal
+  multiscale:
+    kernel_sizes: [3, 5, 7]
+    out_channels: 64
+
+  # Cross-Modal Transformer
+  cross_modal:
+    n_heads: 8
+    n_layers: 2
+    dropout: 0.1
+    ffn_dim: 1024
+
+  # Classifier
+  classifier:
+    hidden_dim: 256
+    dropout: 0.3
+    n_classes: 2
+    phq8_range: [0, 24]
+
+training:
+  batch_size: 16
+  epochs: 50
+  learning_rate: 1e-4
+  weight_decay: 1e-5
+  warmup_steps: 500
+  gradient_clip: 1.0
+  scheduler: "cosine"
+  early_stopping_patience: 10
+
+  # Multi-task loss weights
+  loss:
+    classification_weight: 0.5
+    regression_weight: 0.5
+
+  optimizer: "adamw"
+  seed: 42
+
+data:
+  num_workers: 4
+  pin_memory: true
+  augmentation: true
+
+logging:
+  log_dir: "logs"
+  checkpoint_dir: "checkpoints"
+  use_wandb: false
+  wandb_project: "dg-hmcf-depression"
+  log_interval: 10
