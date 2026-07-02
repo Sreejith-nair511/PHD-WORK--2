@@ -42,10 +42,16 @@ data/cache/
 
 # Checkpoints and outputs
 checkpoints/
-outputs/
 logs/
 runs/
 wandb/
+
+# Ignore real training outputs but track estimated/demo results
+outputs/
+!outputs/estimated_results/
+!outputs/estimated_results/*.png
+!outputs/estimated_results/*.csv
+!outputs/estimated_results/*.txt
 
 # OS
 .DS_Store

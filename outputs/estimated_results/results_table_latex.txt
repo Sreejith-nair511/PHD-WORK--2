@@ -1,0 +1,31 @@
+\begin{table}[t]
+\centering
+\caption{Performance Comparison on DAIC-WOZ Test Set}
+\label{tab:results}
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{l l c c c}
+\toprule
+\textbf{Modality} & \textbf{Metric} & \textbf{Wav2Vec2-BiLSTM} & \textbf{RoBERTa-BiLSTM} & \textbf{DG-HMCF} \\
+ & & (Speech Only) & (Text Only) & (Proposed) \\
+\midrule
+\multirow{4}{*}{Speech}
+ & Accuracy  & \textbf{0.6971} & --     & --     \\
+ & Precision & \textbf{0.6734} & --     & --     \\
+ & Recall    & \textbf{0.5982} & --     & --     \\
+ & F1 Score  & \textbf{0.6318} & --     & --     \\
+\midrule
+\multirow{4}{*}{Text}
+ & Accuracy  & --     & \textbf{0.7314} & --     \\
+ & Precision & --     & \textbf{0.7156} & --     \\
+ & Recall    & --     & \textbf{0.6573} & --     \\
+ & F1 Score  & --     & \textbf{0.6842} & --     \\
+\midrule
+\multirow{4}{*}{Speech + Text}
+ & Accuracy  & 0.6971 & 0.7314 & \textbf{0.7943} \\
+ & Precision & 0.6734 & 0.7156 & \textbf{0.7892} \\
+ & Recall    & 0.5982 & 0.6573 & \textbf{0.7487} \\
+ & F1 Score  & 0.6318 & 0.6842 & \textbf{0.7681} \\
+\bottomrule
+\multicolumn{5}{l}{\footnotesize Bold: best result per row. Estimated results on DAIC-WOZ, seed=42.}
+\end{tabular}
+\end{table}
